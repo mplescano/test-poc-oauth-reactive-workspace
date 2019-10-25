@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mplescano.apps.poc</groupId>
+    <artifactId>test-poc-workspace</artifactId>
+    <version>1.0.0</version>
+    <name>Parent POM for Testing POCs</name>
+    <packaging>pom</packaging>
+
+    <modules>
+      <module>oauth-authorization-server</module>
+      <module>oauth-reactive-resource-server</module>
+      <module>oauth-resource-server-1</module>
+      <module>spring-5-reactive-oauth</module>
+        <!-- 
+        <module>essalud-sisexde-client-web</module>
+        <module>essalud-sisexde-server-api</module>
+        <module>essalud-sisexde-server-oauth</module> -->
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.1.4.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>2.3.5.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>1.0.10.RELEASE</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>central.maven</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>http://central.maven.org/maven2</url>
+        </repository>
+        <repository>
+            <id>repo1.maven</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>http://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
+            <id>datanucleus.maven</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>http://www.datanucleus.org/downloads/maven2</url>
+        </repository>
+        <repository>
+            <id>jasper.maven</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>groovy.maven</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>https://dl.bintray.com/groovy/maven</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>repo1.maven</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>http://repo1.maven.org/maven2</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jasper.maven</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>

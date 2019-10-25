@@ -1,0 +1,17 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          bael:
+            client-name: bael
+            client-id: fooClientIdPassword
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8079/authorize/oauth2/code/bael
+        provider:
+          bael:
+            token-uri: http://localhost:8080/spring-security-oauth-server/oauth/token
+            authorization-uri: http://localhost:8080/spring-security-oauth-server/oauth/authorize
+    user:
+      password: pass
