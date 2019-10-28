@@ -23,7 +23,7 @@ public class FooController {
   }
 
   // API - read
-  @PreAuthorize("#oauth2.hasScope('foo') and #oauth2.hasScope('read')")
+  @PreAuthorize("@oauth2Handler.hasScope(authentication, 'foo') and @oauth2Handler.hasScope(authentication, 'read')")
   @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
   @ResponseBody
   public Foo findById(@PathVariable final long id) {
@@ -31,7 +31,7 @@ public class FooController {
   }
 
   // API - write
-  @PreAuthorize("#oauth2.hasScope('foo') and #oauth2.hasScope('write')")
+  @PreAuthorize("@oauth2Handler.hasScope(authentication, 'foo') and @oauth2Handler.hasScope(authentication, 'write')")
   @RequestMapping(method = RequestMethod.POST, value = "/foos")
   @ResponseStatus(HttpStatus.CREATED)
   @ResponseBody

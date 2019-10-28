@@ -53,5 +53,5 @@ public class OAuth2ResourceServerConfigJwt {
   SignerReactiveJwtDecoder jwtDecoder() {
     return new SignerReactiveJwtDecoder("123");
   }
-  
+
 }
