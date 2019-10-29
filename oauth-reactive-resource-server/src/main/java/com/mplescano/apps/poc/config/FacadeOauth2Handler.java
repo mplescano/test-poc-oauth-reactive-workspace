@@ -1,32 +1,27 @@
 package com.mplescano.apps.poc.config;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.provider.expression.OAuth2SecurityExpressionMethods;
+import org.springframework.security.oauth2.provider.expression.OAuth2ExpressionUtils;
 
 public class FacadeOauth2Handler {
 
     public boolean hasScope(Authentication authentication, String scope) {
-        OAuth2SecurityExpressionMethods oauth2 = new OAuth2SecurityExpressionMethods(authentication);
-        return oauth2.hasScope(scope);
+        return OAuth2ExpressionUtils.hasAnyScope(authentication, new String[]{ scope });
     }
     
     public boolean hasAnyScope(Authentication authentication, String... scopes) {
-        OAuth2SecurityExpressionMethods oauth2 = new OAuth2SecurityExpressionMethods(authentication);
-        return oauth2.hasAnyScope(scopes);
+        return OAuth2ExpressionUtils.hasAnyScope(authentication, scopes);
     }
     
     public boolean hasScopeMatching(Authentication authentication, String scopeRegex) {
-        OAuth2SecurityExpressionMethods oauth2 = new OAuth2SecurityExpressionMethods(authentication);
-        return oauth2.hasScope(scopeRegex);
+        return OAuth2ExpressionUtils.hasAnyScopeMatching(authentication, new String[]{ scopeRegex });
     }
     
     public boolean hasAnyScopeMatching(Authentication authentication, String... scopesRegex) {
-        OAuth2SecurityExpressionMethods oauth2 = new OAuth2SecurityExpressionMethods(authentication);
-        return oauth2.hasAnyScopeMatching(scopesRegex);
+        return OAuth2ExpressionUtils.hasAnyScopeMatching(authentication, scopesRegex);
     }
     
     public boolean denyOAuthClient(Authentication authentication) {
-        OAuth2SecurityExpressionMethods oauth2 = new OAuth2SecurityExpressionMethods(authentication);
-        return oauth2.denyOAuthClient();
+        return !OAuth2ExpressionUtils.isOAuth(authentication);
     }
 }
