@@ -20,9 +20,12 @@ import reactor.core.publisher.Mono;
 @RestController
 public class MainController {
     
-    @Autowired
-    private WebClient webClient;
+    private final WebClient webClient;
     
+    public MainController(WebClient webClient) {
+      this.webClient = webClient;
+    }
+
     @GetMapping("/")
     public Mono<String> index(@AuthenticationPrincipal Mono<OAuth2User> oauth2User) {
        return oauth2User

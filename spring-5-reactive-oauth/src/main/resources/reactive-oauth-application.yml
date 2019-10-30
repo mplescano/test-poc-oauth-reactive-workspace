@@ -16,3 +16,5 @@ spring:
             token-uri: http://localhost:8080/spring-security-oauth-server/oauth/token
             user-info-uri: http://localhost:8088/spring-security-oauth-resource/users/extra
             user-name-attribute: user_name
+server:
+  port: 8089
