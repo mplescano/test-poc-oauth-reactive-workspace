@@ -86,7 +86,7 @@ public class SignerReactiveJwtDecoder implements ReactiveJwtDecoder {
       return this.reactiveJwkSource.get(selector)
         .onErrorMap(e -> new IllegalStateException("Could not obtain the keys", e))
         .map(jwkList -> createClaimsSet(parsedToken, jwkList))
-        .map(set -> createJwt(parsedToken, set))
+        .map(set -> createSpringJwt(parsedToken, set))
         .map(this::validateJwt)
         .onErrorMap(e -> !(e instanceof IllegalStateException) && !(e instanceof JwtException), e -> new JwtException("An error occurred while attempting to decode the Jwt: ", e));
     } catch (RuntimeException ex) {
@@ -105,7 +105,7 @@ public class SignerReactiveJwtDecoder implements ReactiveJwtDecoder {
     return jwt;
   }
   
-  private Jwt createJwt(JWT parsedJwt, JWTClaimsSet jwtClaimsSet) {
+  private Jwt createSpringJwt(JWT parsedJwt, JWTClaimsSet jwtClaimsSet) {
     Instant expiresAt = null;
     if (jwtClaimsSet.getExpirationTime() != null) {
       expiresAt = jwtClaimsSet.getExpirationTime().toInstant();
@@ -124,7 +124,8 @@ public class SignerReactiveJwtDecoder implements ReactiveJwtDecoder {
   }
   
   private static OctetSequenceKey secretKey(String secretKey) {
-    return new OctetSequenceKey.Builder(secretKey.getBytes(StandardCharsets.UTF_8))
+    final byte[] keyChanllenge = secretKey.getBytes(StandardCharsets.UTF_8);
+    return new OctetSequenceKey.Builder(keyChanllenge)
         .build();
   }
   
