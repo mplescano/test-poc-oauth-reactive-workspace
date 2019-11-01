@@ -5,6 +5,8 @@ import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 
 import com.mplescano.apps.poc.web.dto.Foo;
 
+import reactor.core.publisher.Mono;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -26,8 +28,8 @@ public class FooController {
   @PreAuthorize("@oauth2Handler.hasScope(authentication, 'foo') and @oauth2Handler.hasScope(authentication, 'read')")
   @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
   @ResponseBody
-  public Foo findById(@PathVariable final long id) {
-    return new Foo(Long.parseLong(randomNumeric(2)), randomAlphabetic(4));
+  public Mono<Foo> findById(@PathVariable final long id) {
+    return Mono.just(new Foo(Long.parseLong(randomNumeric(2)), randomAlphabetic(4)));
   }
 
   // API - write
@@ -35,9 +37,9 @@ public class FooController {
   @RequestMapping(method = RequestMethod.POST, value = "/foos")
   @ResponseStatus(HttpStatus.CREATED)
   @ResponseBody
-  public Foo create(@RequestBody final Foo foo) {
+  public Mono<Foo> create(@RequestBody final Foo foo) {
     foo.setId(Long.parseLong(randomNumeric(2)));
-    return foo;
+    return Mono.just(foo);
   }
 
 }
