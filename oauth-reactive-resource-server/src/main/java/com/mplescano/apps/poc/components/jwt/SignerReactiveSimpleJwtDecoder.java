@@ -1,4 +1,4 @@
-package org.springframework.security.oauth2.jwt;
+package com.mplescano.apps.poc.components.jwt;
 
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSAlgorithm;
@@ -15,12 +15,19 @@ import com.nimbusds.jwt.proc.BadJWTException;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
 import org.springframework.security.oauth2.core.OAuth2TokenValidator;
 import org.springframework.security.oauth2.core.OAuth2TokenValidatorResult;
 import org.springframework.security.oauth2.jose.jws.JwsAlgorithms;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.jwt.JwtException;
+import org.springframework.security.oauth2.jwt.JwtTimestampValidator;
+import org.springframework.security.oauth2.jwt.JwtValidationException;
+import org.springframework.security.oauth2.jwt.ReactiveJwtDecoder;
 
 import reactor.core.publisher.Mono;
 
@@ -31,7 +38,7 @@ public class SignerReactiveSimpleJwtDecoder implements ReactiveJwtDecoder {
     private static final BadJOSEException NO_MATCHING_VERIFIERS_EXCEPTION = new BadJOSEException(
             "JWS object rejected: No matching verifier(s) found");
 
-    private OAuth2TokenValidator<Jwt> jwtValidator = JwtValidators.createDefault();
+    private OAuth2TokenValidator<Jwt> jwtValidator = new DelegatingOAuth2TokenValidator<>(Arrays.asList(new JwtTimestampValidator()));
 
     private final JWSVerifier verifier;
 

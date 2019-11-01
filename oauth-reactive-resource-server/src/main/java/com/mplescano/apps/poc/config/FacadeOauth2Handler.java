@@ -1,7 +1,8 @@
 package com.mplescano.apps.poc.config;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.provider.expression.OAuth2ExpressionUtils;
+
+import com.mplescano.apps.poc.components.jwt.OAuth2ExpressionUtils;
 
 public class FacadeOauth2Handler {
 
