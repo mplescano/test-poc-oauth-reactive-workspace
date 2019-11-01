@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.oauth2.jwt.SignerReactiveJwtDecoder;
+import org.springframework.security.oauth2.jwt.SignerReactiveSimpleJwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtReactiveAuthenticationManager;
 import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtAuthenticationConverterAdapter;
@@ -43,15 +43,15 @@ public class OAuth2ResourceServerConfigJwt {
   }
   
   @Bean
-  JwtReactiveAuthenticationManager authenticationManager(SignerReactiveJwtDecoder jwtDecoder) {
+  JwtReactiveAuthenticationManager authenticationManager(SignerReactiveSimpleJwtDecoder jwtDecoder) {
     JwtReactiveAuthenticationManager authenticationManager = new JwtReactiveAuthenticationManager(jwtDecoder);
     authenticationManager.setJwtAuthenticationConverter(jwtAuthenticationConverter());
     return authenticationManager;
   }
   
   @Bean
-  SignerReactiveJwtDecoder jwtDecoder() {
-    return new SignerReactiveJwtDecoder("123");
+  SignerReactiveSimpleJwtDecoder jwtDecoder() {
+    return new SignerReactiveSimpleJwtDecoder("123");
   }
 
 }
