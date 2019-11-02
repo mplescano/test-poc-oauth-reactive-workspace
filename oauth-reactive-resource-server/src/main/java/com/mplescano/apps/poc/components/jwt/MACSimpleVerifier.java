@@ -1,4 +1,4 @@
-package com.nimbusds.jose.crypto;
+package com.mplescano.apps.poc.components.jwt;
 
 import java.util.Collections;
 import java.util.LinkedHashSet;
