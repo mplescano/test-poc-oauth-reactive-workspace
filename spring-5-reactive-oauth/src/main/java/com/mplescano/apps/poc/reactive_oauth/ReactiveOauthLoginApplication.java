@@ -9,12 +9,14 @@ import org.springframework.security.oauth2.client.web.reactive.function.client.S
 import org.springframework.security.oauth2.client.web.server.ServerOAuth2AuthorizedClientRepository;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.mplescano.apps.poc.commons.YamlPropertyLoaderFactory;
+
 @PropertySource(value = "classpath:reactive-oauth-application.yml", factory = YamlPropertyLoaderFactory.class)
 @SpringBootApplication
-public class Spring5ReactiveOauthApplication {
+public class ReactiveOauthLoginApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Spring5ReactiveOauthApplication.class, args);
+        SpringApplication.run(ReactiveOauthLoginApplication.class, args);
     }
 
     @Bean

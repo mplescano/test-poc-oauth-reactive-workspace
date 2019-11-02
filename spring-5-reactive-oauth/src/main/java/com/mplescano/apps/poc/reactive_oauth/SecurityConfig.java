@@ -17,16 +17,16 @@ import org.springframework.util.ClassUtils;
 public class SecurityConfig {
 
     @Bean
-    public SecurityWebFilterChain configure(ServerHttpSecurity http, ReactiveAuthenticationManager defaultAuthenticationManager) throws Exception {
+    public SecurityWebFilterChain configure(ServerHttpSecurity http, ReactiveAuthenticationManager authenticationManager) throws Exception {
         return http.authorizeExchange()
             .pathMatchers("/about").permitAll()
             .anyExchange().authenticated()
-            .and().oauth2Login().authenticationManager(defaultAuthenticationManager)
+            .and().oauth2Login().authenticationManager(authenticationManager)
             .and().build();
     }
     
     @Bean
-    public ReactiveAuthenticationManager defaultAuthenticationManager() {
+    public ReactiveAuthenticationManager authenticationManager() {
         WebClientReactiveAuthorizationCodeTokenResponseClient client = new WebClientReactiveAuthorizationCodeTokenResponseClient();
         ReactiveAuthenticationManager result = new OAuth2LoginReactiveAuthenticationManager(client, new DefaultReactiveOAuth2UserService());
 

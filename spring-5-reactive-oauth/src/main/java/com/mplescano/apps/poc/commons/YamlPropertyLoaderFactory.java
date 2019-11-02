@@ -1,4 +1,4 @@
-package com.mplescano.apps.poc.reactive_oauth;
+package com.mplescano.apps.poc.commons;
 
 import java.io.IOException;
 

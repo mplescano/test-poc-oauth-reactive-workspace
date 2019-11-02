@@ -8,10 +8,12 @@ spring:
             client-id: fooClientIdPassword
             client-secret: secret
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8079/authorize/oauth2/code/bael
+            redirect-uri: http://localhost:8089/authorize/oauth2/code/bael
         provider:
           bael:
             token-uri: http://localhost:8080/spring-security-oauth-server/oauth/token
             authorization-uri: http://localhost:8080/spring-security-oauth-server/oauth/authorize
     user:
       password: pass
+server:
+  port: 8089
