@@ -1,0 +1,8 @@
+the:
+  authorization:
+    client-id: fooClientIdPassword
+    client-secret: secret
+    token-uri: http://localhost:8080/spring-security-oauth-server/oauth/token
+
+server:
+  port: 8089

@@ -50,7 +50,7 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
                 .scopes("foo", "read", "write")
                 .accessTokenValiditySeconds(3600)       // 1 hour
                 .refreshTokenValiditySeconds(2592000)  // 30 days
-                .redirectUris("http://www.example.com","http://localhost:8089/","http://localhost:8089/login/oauth2/code/custom","http://localhost:8080/ui-thymeleaf/login/oauth2/code/custom", "http://localhost:8089/authorize/oauth2/code/bael", "http://localhost:8080/login/oauth2/code/bael")
+                .redirectUris("http://www.example.com","http://localhost:8089/","http://localhost:8089/login/oauth2/code/custom","http://localhost:8080/ui-thymeleaf/login/oauth2/code/custom", "http://localhost:8089/authorize/oauth2/code/bael", "http://localhost:8089/login/oauth2/code/bael")
                 .and()
                 .withClient("barClientIdPassword")
                 .secret(passwordEncoder().encode("secret"))

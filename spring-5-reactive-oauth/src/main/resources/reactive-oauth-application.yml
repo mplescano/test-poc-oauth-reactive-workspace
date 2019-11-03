@@ -9,7 +9,7 @@ spring:
             client-secret: secret
             scope: read,foo
             authorization-grant-type: authorization_code
-            redirect-uri-template: http://localhost:8089/login/oauth2/code/custom
+            redirect-uri: http://localhost:8089/login/oauth2/code/custom
         provider:
           custom:
             authorization-uri: http://localhost:8080/spring-security-oauth-server/oauth/authorize
