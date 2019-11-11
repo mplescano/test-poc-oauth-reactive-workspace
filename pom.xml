@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mplescano.apps.poc</groupId>
-    <artifactId>test-poc-workspace</artifactId>
+    <artifactId>test-poc-oauth-reactive-workspace</artifactId>
     <version>1.0.0</version>
     <name>Parent POM for Testing POCs</name>
     <packaging>pom</packaging>
@@ -12,12 +12,8 @@
     <modules>
       <module>oauth-authorization-server</module>
       <module>oauth-reactive-resource-server</module>
-      <module>oauth-resource-server-1</module>
-      <module>spring-5-reactive-oauth</module>
-        <!-- 
-        <module>essalud-sisexde-client-web</module>
-        <module>essalud-sisexde-server-api</module>
-        <module>essalud-sisexde-server-oauth</module> -->
+      <module>oauth-resource-server</module>
+      <module>oauth-clients</module>
     </modules>
 
     <properties>
