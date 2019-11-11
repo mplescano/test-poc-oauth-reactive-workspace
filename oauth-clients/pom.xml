@@ -9,7 +9,7 @@
   <description>WebFluc and Spring Security OAuth </description>
 
   <parent>
-    <artifactId>test-poc-workspace</artifactId>
+    <artifactId>test-poc-oauth-reactive-workspace</artifactId>
     <groupId>com.mplescano.apps.poc</groupId>
     <version>1.0.0</version>
   </parent>
